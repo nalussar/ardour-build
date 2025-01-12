@@ -93,7 +93,7 @@ apt-get -y install build-essential \
 	${DEBIANPKGS} \
 	git autoconf automake libtool pkg-config \
 	curl unzip ed yasm cmake ca-certificates \
-	nsis subversion ocaml-nox gperf meson python
+	nsis subversion ocaml-nox gperf meson python3
 
 # use posix threads (needed for std::mutex et al)
 update-alternatives --set-selections << EOF
@@ -247,10 +247,10 @@ rm -rf drmingw
 tar xf ${SRCDIR}/drmingw.tar.xz
 cp -av drmingw/$WARCH/* "$PREFIX"/
 
-src xz-5.2.2 tar.bz2 http://tukaani.org/xz/xz-5.2.2.tar.bz2
+src xz-5.2.2 tar.bz2 https://downloads.videolan.org/contrib/xz/xz-5.2.2.tar.bz2
 autoconfbuild
 
-src zlib-1.2.7 tar.gz ftp://ftp.simplesystems.org/pub/libpng/png/src/history/zlib/zlib-1.2.7.tar.gz
+src zlib-1.2.7 tar.gz https://www.zlib.net/fossils/zlib-1.2.7.tar.gz
 make -fwin32/Makefile.gcc PREFIX=${XPREFIX}-
 make install -fwin32/Makefile.gcc SHARED_MODE=1 \
 	INCLUDE_PATH=${PREFIX}/include \
@@ -311,7 +311,7 @@ wq
 EOF
 autoconfbuild
 
-src expat-2.4.1 tar.gz https://sourceforge.net/projects/expat/files/expat/2.4.1/expat-2.4.1.tar.gz
+src expat-2.4.1 tar.gz https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-2.4.1.tar.gz
 # src expat-2.1.0 tar.gz https://sourceforge.net/projects/expat/files/expat/2.1.0/expat-2.1.0-RENAMED-VULNERABLE-PLEASE-USE-2.3.0-INSTEAD.tar.gz
 autoconfbuild
 
@@ -378,7 +378,7 @@ mesonbuild -Dgir=false #-Duse_fontconfig=true
 src atk-2.14.0 tar.bz2 http://ftp.gnome.org/pub/GNOME/sources/atk/2.14/atk-2.14.0.tar.xz
 autoconfbuild --disable-rebuilds
 
-src gdk-pixbuf-2.31.1 tar.xz http://ftp.acc.umu.se/pub/GNOME/sources/gdk-pixbuf/2.31/gdk-pixbuf-2.31.1.tar.xz
+src gdk-pixbuf-2.31.1 tar.xz https://download.gnome.org/sources/gdk-pixbuf/2.31/gdk-pixbuf-2.31.1.tar.xz
 autoconfbuild --disable-modules --without-gdiplus --with-included-loaders=yes
 
 # latest: http://ftp.acc.umu.se/pub/GNOME/sources/gtk+/2.24/gtk+-2.24.32.tar.xz
